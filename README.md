@@ -1,4 +1,4 @@
-# John Doe Portfolio
+Ankit Kumar Portfolio
 
 Static portfolio site built with Tailwind CSS via CDN and a touch of custom styling.
 
