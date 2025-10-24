@@ -77,3 +77,21 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Robust hero viewport height for mobile/desktop */
+.hero-screen {
+    /* Fallback for mobile browsers with shrinking UI bars */
+    min-height: calc(100svh - 4rem);
+}
+@supports (height: 1dvh) {
+    .hero-screen {
+        /* Prefer dynamic viewport on modern Android */
+        min-height: calc(100dvh - 4rem);
+    }
+}
+@media (min-width: 768px) {
+    .hero-screen {
+        /* Desktop: fixed header 5rem (md:h-20) */
+        min-height: calc(100vh - 5rem);
+    }
+}

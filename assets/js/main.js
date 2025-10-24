@@ -1,4 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+        const toggleMenu = (forceClose = false) => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (forceClose && !isHidden) {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                return;
+            }
+            mobileMenu.classList.toggle('hidden');
+            const expanded = mobileMenu.classList.contains('hidden') ? 'false' : 'true';
+            menuBtn.setAttribute('aria-expanded', expanded);
+        };
+
+        menuBtn.addEventListener('click', () => toggleMenu());
+
+        // Close menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => toggleMenu(true));
+        });
+
+        // Close menu on resize to md and above
+        window.addEventListener('resize', () => {
+            if (window.matchMedia('(min-width: 768px)').matches) {
+                toggleMenu(true);
+            }
+        });
+    }
+
     const typedTextSpan = document.querySelector('.typed-text');
     const textArray = ["Full-Stack Developer", "Graphics Designer", "Problem Solver"];
     const typingDelay = 100;
