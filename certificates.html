@@ -3,163 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0d122b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="apple-touch-icon" href="assets/images/1760379457459.jpg">
-    <title>Ankit Kumar - Certificates</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Ankit Kumar - Certificates & Achievements</title>
+    
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        base: '#0a0a0a',
+                        surface: '#121212',
+                        surface2: '#1E1E1E',
+                        accent: '#FFFFFF',
+                        muted: '#A0A0A0',
+                        border: '#333333'
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="leading-normal tracking-normal">
-    <div class="blur-effect" style="top: -150px; left: -200px;"></div>
-    <div class="blur-effect" style="bottom: 0; right: -250px; background: radial-gradient(circle, rgba(0, 198, 255, 0.08), rgba(0, 198, 255, 0) 70%);"></div>
+<body class="antialiased selection:bg-accent selection:text-base">
+<canvas id="particle-network"></canvas>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
 
-    <header class="bg-opacity-80 bg-[#0d122b] fixed w-full z-30 top-0 backdrop-blur-sm shadow-md shadow-cyan-500/10 h-16 md:h-20">
-        <div class="container mx-auto flex items-center justify-between h-full px-4">
-            <a href="index.html#hero" class="text-2xl font-bold text-gradient">Ankit Kumar</a>
-            <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-cyan-400 transition p-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation" style="min-width:44px;min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            <nav class="hidden md:block">
-                <ul class="flex items-center space-x-4 md:space-x-8 text-sm md:text-base">
-                    <li><a href="index.html#about" class="hover:text-cyan-400 transition duration-300">About</a></li>
-                    <li><a href="index.html#skills" class="hover:text-cyan-400 transition duration-300">Skills</a></li>
-                    <li><a href="certificates.html" class="text-cyan-400 font-semibold">Certificates</a></li>
-                    <li><a href="index.html#contact" class="hover:text-cyan-400 transition duration-300">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <nav id="mobile-menu" class="md:hidden hidden bg-[#0d122b]/95 border-t border-slate-800">
-            <ul class="px-4 py-3 space-y-2 text-sm">
-                <li><a href="index.html#about" class="block py-2 hover:text-cyan-400">About</a></li>
-                <li><a href="index.html#skills" class="block py-2 hover:text-cyan-400">Skills</a></li>
-                <li><a href="certificates.html" class="block py-2 text-cyan-400 font-semibold">Certificates</a></li>
-                <li><a href="index.html#contact" class="block py-2 hover:text-cyan-400">Contact</a></li>
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="ambient-glow bg-white/10 w-[600px] h-[600px] top-[-200px] left-[-200px] animate-blob"></div>
+        <div class="ambient-glow bg-gray-500/10 w-[500px] h-[500px] bottom-[-100px] right-[-100px] animate-blob animation-delay-2000"></div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+        <nav class="glass-card rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+            <a href="index.html" class="text-accent font-bold tracking-tight text-lg interactive">AK.</a>
+            <ul class="flex items-center space-x-4 md:space-x-6 text-xs md:text-sm font-medium">
+                <li><a href="index.html#about" class="hover:text-accent transition-colors interactive">About</a></li>
+                <li><a href="index.html#education" class="hover:text-accent transition-colors interactive">Education</a></li>
+                <li><a href="index.html#skills" class="hover:text-accent transition-colors interactive">Skills</a></li>
+                <li><a href="index.html#work" class="hover:text-accent transition-colors interactive">Work</a></li>
+                <li><a href="certificates.html" class="text-accent font-bold interactive">Certificates</a></li>
+                <li><a href="index.html#contact" class="hover:text-accent transition-colors interactive">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="pt-20 md:pt-20 pb-16 z-10 relative">
-        <section class="container mx-auto px-6 text-center md:text-left">
-            <h1 class="text-4xl md:text-5xl font-bold text-slate-200 mb-4">Certificates &amp; Achievements</h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-3xl">
-                A curated collection of certifications that highlight my commitment to continuous learning
-                across web development, cloud, and modern JavaScript ecosystems.
+    <main class="relative z-10 container mx-auto px-6 pt-32 md:pt-40 pb-15 max-w-6xl">
+        
+        <!-- Page Header -->
+        <section class="mb-16 reveal">
+            <div class="inline-block glass-card rounded-full px-4 py-1.5 mb-6 border border-white/10">
+                <span class="text-xs font-bold text-accent uppercase tracking-widest">Credentials</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-accent tracking-tighter leading-tight mb-6 text-glow">
+                Certificates &<br>
+                <span class="text-green-500 font-light">Achievements.</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl text-muted font-light leading-relaxed">
+                A curated collection of certifications highlighting my expertise in web development, 
+                networking, and programming ecosystems.
             </p>
         </section>
 
-        <section id="certificates" class="container mx-auto px-6 mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/innovvate%20certificate%20.jpg" alt="Innovvate certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">Innovvate Certificate</h2>
-                    <p class="text-slate-400 flex-grow">Recognition for excellence demonstrated during the Innovvate program.</p>
-                    <a href="assets/images/innovvate%20certificate%20.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
+        <!-- Certificates Grid -->
+        <section id="certificates" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Innovvate Certificate -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/innovvate%20certificate%20.jpg" alt="Innovvate certificate" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">Innovvate Certificate</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">Recognition for excellence demonstrated during the Innovvate program.</p>
+                    <a href="assets/images/innovvate%20certificate%20.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
             </article>
 
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/CCNA%20introduction%20to%20networks.jpg" alt="CCNA Introduction to Networks certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">CCNA: Introduction to Networks</h2>
-                    <p class="text-slate-400 flex-grow">Cisco Networking Academy credential covering network fundamentals, IP connectivity, and basic security concepts.</p>
-                    <a href="assets/images/CCNA%20introduction%20to%20networks.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
+            <!-- CCNA Intro -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/CCNA%20introduction%20to%20networks.jpg" alt="CCNA Certificate" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">CCNA: Introduction to Networks</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">Cisco Academy credential covering network fundamentals, IP connectivity, and security concepts.</p>
+                    <a href="assets/images/CCNA%20introduction%20to%20networks.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
             </article>
 
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/CCNA%20switching%20routing%20and%20wireless%20eseential.jpg" alt="CCNA Switching Routing and Wireless Essentials certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">CCNA: Switching, Routing &amp; Wireless Essentials</h2>
-                    <p class="text-slate-400 flex-grow">Validates hands-on expertise building and securing enterprise networks with Cisco technologies.</p>
-                    <a href="assets/images/CCNA%20switching%20routing%20and%20wireless%20eseential.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
+            <!-- CCNA Switching -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/CCNA%20switching%20routing%20and%20wireless%20eseential.jpg" alt="CCNA Switching" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">CCNA: Switching & Routing</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">Validates expertise building and securing enterprise networks with Cisco technologies.</p>
+                    <a href="assets/images/CCNA%20switching%20routing%20and%20wireless%20eseential.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
             </article>
 
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/introduction%20to%20cybersecurity.jpg" alt="Introduction to Cybersecurity certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">Introduction to Cybersecurity</h2>
-                    <p class="text-slate-400 flex-grow">Demonstrates understanding of cyber threats, protection mechanisms, and security best practices.</p>
-                    <a href="assets/images/introduction%20to%20cybersecurity.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
+            <!-- Cybersecurity -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/introduction%20to%20cybersecurity.jpg" alt="Cybersecurity" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">Intro to Cybersecurity</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">Demonstrates understanding of cyber threats, protection mechanisms, and best practices.</p>
+                    <a href="assets/images/introduction%20to%20cybersecurity.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
             </article>
 
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/javascript%20essential%201.jpg" alt="JavaScript Essentials 1 certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">JavaScript Essentials 1</h2>
-                    <p class="text-slate-400 flex-grow">Covers core JavaScript programming concepts from syntax to DOM interactions.</p>
-                    <a href="assets/images/javascript%20essential%201.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
+            <!-- JS Essentials -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/javascript%20essential%201.jpg" alt="JavaScript Essentials" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">JavaScript Essentials 1</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">Covers core JavaScript programming concepts from syntax to DOM interactions.</p>
+                    <a href="assets/images/javascript%20essential%201.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
             </article>
 
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/python%20essential%201.jpg" alt="Python Essentials 1 certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">Python Essentials 1</h2>
-                    <p class="text-slate-400 flex-grow">Highlights proficiency with Python basics, data structures, and scripting workflows.</p>
-                    <a href="assets/images/python%20essential%201.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
+            <!-- Salesforce -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/salesforce%20developer.jpg" alt="Salesforce Developer" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">Salesforce Developer</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">Certification validating capabilities across Salesforce customization and automation.</p>
+                    <a href="assets/images/salesforce%20developer.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
             </article>
 
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/python%20essential%202.jpg" alt="Python Essentials 2 certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">Python Essentials 2</h2>
-                    <p class="text-slate-400 flex-grow">Demonstrates intermediate Python skills including OOP, modules, and error handling.</p>
-                    <a href="assets/images/python%20essential%202.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
-                </div>
-            </article>
-
-            <article class="card rounded-lg overflow-hidden flex flex-col">
-                <figure class="overflow-hidden border border-slate-800/60">
-                    <img src="assets/images/salesforce%20developer.jpg" alt="Salesforce Developer certificate" class="w-full h-60 object-cover">
-                </figure>
-                <div class="p-6 flex flex-col gap-4 flex-grow">
-                    <h2 class="text-2xl font-semibold text-slate-200">Salesforce Developer</h2>
-                    <p class="text-slate-400 flex-grow">Certification validating capabilities across Salesforce customization and automation.</p>
-                    <a href="assets/images/salesforce%20developer.jpg" target="_blank" class="self-start glowing-btn text-sm">Show Credential</a>
-                </div>
-            </article>
         </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 text-center reveal">
+            <h2 class="text-3xl font-bold text-accent mb-6 tracking-tight">Looking for more details?</h2>
+            <p class="text-muted mb-8 max-w-xl mx-auto">I'm always expanding my knowledge base. Feel free to contact me for specific technical verification.</p>
+            <a href="index.html#contact" class="bg-accent text-base px-10 py-4 rounded-full font-bold text-base hover:bg-gray-200 transition-all interactive">Contact Me</a>
+        </section>
+
     </main>
 
+    <!-- Simple Footer -->
+    <footer class="border-t border-border z-10 relative">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between">
+            <p class="text-muted text-sm mb-4 md:mb-0">© 2024 Ankit Kumar. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="https://github.com/0ankitkumar0" class="text-muted hover:text-accent transition-colors interactive">GitHub</a>
+                <a href="https://www.linkedin.com/in/0ankitkumar0/" class="text-muted hover:text-accent transition-colors interactive">LinkedIn</a>
+                <a href="https://x.com/0ankit_singh0" class="text-muted hover:text-accent transition-colors interactive">X/Twitter</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scroll to top button -->
-    <button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top">
+    <button class="fixed bottom-8 right-8 z-50 glass-card w-12 h-12 rounded-full flex items-center justify-center text-accent interactive reveal" id="scroll-top" style="opacity: 0;">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-    <!-- Image lightbox -->
-    <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-        <img src="" alt="Lightbox image">
-    </div>
-
-    <footer class="py-6 text-center text-slate-500 relative z-10">
-        <p>Designed &amp; Built by Ankit Kumar</p>
-    </footer>
-
+    <!-- External Interactive JS -->
     <script src="assets/js/main.js"></script>
+    <script>
+        // Specific scroll to top logic for this page
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.opacity = "1";
+            } else {
+                scrollTopBtn.style.opacity = "0";
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>

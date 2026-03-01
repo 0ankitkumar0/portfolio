@@ -1,378 +1,252 @@
-/* Core theme styling */
+/* Base & Custom Cursor */
 body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #0d122b 0%, #080d20 50%, #030613 100%);
-    color: #ccd6f6;
-    position: relative;
+    background-color: #0a0a0a;
+    color: #A0A0A0;
+    cursor: none; /* Hide default cursor for custom one on desktop */
     overflow-x: hidden;
-    /* Smooth momentum scrolling on iOS */
-    -webkit-overflow-scrolling: touch;
-    /* iPhone safe area padding */
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+    font-family: 'Inter', sans-serif;
 }
 
-/* Remove 300ms tap delay */
-a, button, [role="button"], input, select, textarea {
-    touch-action: manipulation;
+/* Hide scrollbar for clean look */
+::-webkit-scrollbar { 
+    width: 8px; 
+}
+::-webkit-scrollbar-track { 
+    background: #0a0a0a; 
+}
+::-webkit-scrollbar-thumb { 
+    background: #333333; 
+    border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: #555555; 
 }
 
-.blur-effect {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0) 70%);
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.text-gradient {
-    background: linear-gradient(90deg, #64ffda, #00c6ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* ─── Buttons — touch-friendly sizing ─── */
-.glowing-btn {
-    position: relative;
-    color: #64ffda;
-    border: 2px solid #64ffda;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    /* Min 44×44 tap target (Apple HIG) */
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Hover only on devices that support it */
-@media (hover: hover) and (pointer: fine) {
-    .glowing-btn:hover {
-        color: #0a192f;
-        background-color: #64ffda;
-        box-shadow: 0 0 20px #64ffda;
-    }
-}
-
-/* Active/tap feedback for touch devices */
-.glowing-btn:active {
-    color: #0a192f;
-    background-color: #64ffda;
-    box-shadow: 0 0 20px #64ffda;
-    transform: scale(0.96);
-    transition: transform 0.1s ease;
-}
-
-/* ─── Cards — touch-aware interactions ─── */
-.card {
-    background-color: #080d20;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 1px solid #1d2d50;
-    /* Prevent accidental text-select on tap */
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-/* Hover lift only on pointer devices */
-@media (hover: hover) and (pointer: fine) {
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-    }
-}
-
-/* Tap feedback for touch devices */
-.card:active {
-    transform: scale(0.98);
-    border-color: #64ffda44;
-    transition: transform 0.1s ease;
-}
-
-/* Allow text selection inside card paragraphs */
-.card p, .card h2, .card h3 {
-    -webkit-user-select: text;
-    user-select: text;
-}
-
-.typed-text::after {
-    content: '|';
-    display: inline-block;
-    animation: blink 0.7s infinite;
-    color: #64ffda;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* ─── Scroll-triggered sections ─── */
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    /* GPU acceleration for smooth mobile scrolling */
-    will-change: opacity, transform;
-}
-
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ─── Mobile menu animation ─── */
-#mobile-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
-    opacity: 0;
-}
-
-#mobile-menu.menu-open {
-    max-height: 400px;
-    opacity: 1;
-}
-
-/* Bigger tap targets for mobile nav links */
-#mobile-menu a {
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    padding: 0.625rem 0.75rem;
-    border-radius: 0.375rem;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-#mobile-menu a:active {
-    background-color: rgba(100, 255, 218, 0.08);
-    color: #64ffda;
-}
-
-/* Hamburger → X animation */
-.hamburger-line {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: currentColor;
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.menu-active .hamburger-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-.menu-active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-.menu-active .hamburger-line:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* ─── Scroll-to-top button ─── */
-.scroll-top-btn {
+/* Custom Cursor Elements */
+.cursor-dot, .cursor-outline {
     position: fixed;
-    bottom: 2rem;
-    right: 1.5rem;
-    z-index: 50;
-    width: 48px;
-    height: 48px;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: #0d122b;
-    border: 2px solid #64ffda;
-    color: #64ffda;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(20px);
+    z-index: 9999;
     pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    /* iPhone safe area */
-    bottom: calc(2rem + env(safe-area-inset-bottom));
+}
+.cursor-dot {
+    width: 8px; height: 8px;
+    background-color: white;
+}
+.cursor-outline {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
-.scroll-top-btn.visible {
+/* Interactive Hover State for Cursor */
+body.hovering .cursor-outline {
+    width: 60px; height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+}
+
+/* Glassmorphism Effect with Glowing Hover */
+.glass-card {
+    background: rgba(30, 30, 30, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    /* Multi-layered glow: outer soft white and inner deep dark */
+    box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.1), 
+                0 20px 40px -20px rgba(0, 0, 0, 1);
+    background: rgba(40, 40, 40, 0.5);
+    transform: translateY(-5px);
+}
+
+/* Specific Toolbox Badge Glow */
+#toolbox span {
+    transition: all 0.3s ease;
+}
+
+#toolbox span:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+}
+
+/* Bento Box specific hover */
+.bento-hover:hover {
+    transform: translateY(-5px) scale(1.01);
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto;
 }
 
-.scroll-top-btn:active {
-    background: #64ffda;
-    color: #0a192f;
-    transform: scale(0.9);
+/* Glowing text effect (High-impact titles) */
+.text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-/* ─── Active navigation indicator ─── */
-header nav a.nav-active {
-    color: #64ffda;
-    position: relative;
-}
-
-header nav a.nav-active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #64ffda;
-    border-radius: 2px;
-}
-
-/* ─── Touch ripple effect ─── */
-.ripple-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.ripple-container .ripple {
+/* Ambient Background Glows */
+.ambient-glow {
     position: absolute;
     border-radius: 50%;
-    background: rgba(100, 255, 218, 0.25);
-    transform: scale(0);
-    animation: ripple-animation 0.6s ease-out forwards;
+    filter: blur(120px);
+    opacity: 0.4;
     pointer-events: none;
+    z-index: -1;
 }
 
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+/* ===============================
+    EDUCATION SECTION
+================================= */
+
+#education {
+    padding: 120px 20px;
+    position: relative;
 }
 
-/* ─── Social icons — larger touch targets ─── */
-.social-links a {
-    min-width: 44px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+/* Timeline Wrapper */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+
+/* Vertical Line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.05)
+    );
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+/* Timeline Dot */
+.timeline-dot {
+    position: absolute;
+    left: -2px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+    background: #0a0a0a;
+    border: 2px solid rgba(255,255,255,0.6);
     border-radius: 50%;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
-.social-links a:active {
-    background-color: rgba(100, 255, 218, 0.12);
-    color: #64ffda;
-    transform: scale(0.9);
+/* Timeline Card */
+.timeline-content {
+    background: rgba(30, 30, 30, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 18px;
+    transition: all 0.3s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .social-links a:hover {
-        color: #64ffda;
-        background-color: rgba(100, 255, 218, 0.06);
+/* Hover Effects (Subtle Premium) */
+.timeline-item:hover .timeline-content {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.9);
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    border-color: #ffffff;
+    box-shadow: 0 0 10px #fff;
+}
+
+/* Typography */
+.timeline-date {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    font-weight: 600;
+}
+
+.timeline-content h3 {
+    margin: 12px 0 6px;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.timeline-meta {
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 18px;
+}
+
+.timeline-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #b5b5b5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 25px;
     }
-}
-
-/* ─── Skills grid — horizontal scroll on small phones ─── */
-@media (max-width: 400px) {
-    .skills-scroll {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 1rem;
-        padding-bottom: 1rem;
-        /* Hide scrollbar but keep scrollable */
-        scrollbar-width: none;
+    .timeline::before {
+        left: 4px;
     }
-    .skills-scroll::-webkit-scrollbar {
+    .timeline-dot {
+        left: -6px;
+    }
+    cursor: auto; /* Show default cursor on mobile devices */
+    .cursor-dot, .cursor-outline {
         display: none;
     }
-    .skills-scroll > div {
-        flex: 0 0 140px;
-        scroll-snap-align: start;
-    }
 }
 
-/* ─── Robust hero viewport height for mobile/desktop ─── */
-.hero-screen {
-    min-height: calc(100svh - 4rem);
-}
-@supports (height: 1dvh) {
-    .hero-screen {
-        min-height: calc(100dvh - 4rem);
-    }
-}
-@media (min-width: 768px) {
-    .hero-screen {
-        min-height: calc(100vh - 5rem);
-    }
+/* Contact Button Override */
+#contact .bg-accent {
+    color: #000000 !important;
 }
 
-/* ─── Footer safe area for iPhones with home indicator ─── */
-footer {
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+#contact .bg-accent svg {
+    stroke: #000000;
 }
+/* ===============================
+   Particle Network Background
+================================= */
 
-/* ─── Image lightbox overlay ─── */
-.lightbox-overlay {
+#particle-network {
     position: fixed;
     inset: 0;
-    z-index: 100;
-    background: rgba(3, 6, 19, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Behind everything */
     pointer-events: none;
-    transition: opacity 0.3s ease;
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-}
-
-.lightbox-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.lightbox-overlay img {
-    max-width: 92vw;
-    max-height: 85vh;
-    border-radius: 0.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.lightbox-overlay.active img {
-    transform: scale(1);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ccd6f6;
-    font-size: 2rem;
-    cursor: pointer;
-    border-radius: 50%;
-    background: rgba(13, 18, 43, 0.8);
-    border: 1px solid #1d2d50;
-    transition: color 0.2s ease, background 0.2s ease;
-    top: calc(1rem + env(safe-area-inset-top));
-    right: calc(1rem + env(safe-area-inset-right));
-}
-
-.lightbox-close:active {
-    background: #64ffda;
-    color: #0a192f;
 }

@@ -3,266 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0d122b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="apple-touch-icon" href="assets/images/1760379457459.jpg">
-    <title>Ankit kumar - Portfolio</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Ankit Kumar - Creative Developer & 3D Artist</title>
+    
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        base: '#0a0a0a',
+                        surface: '#121212',
+                        surface2: '#1E1E1E',
+                        accent: '#FFFFFF',
+                        muted: '#A0A0A0',
+                        border: '#333333'
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="leading-normal tracking-normal">
-    <div class="blur-effect" style="top: -150px; left: -200px;"></div>
-    <div class="blur-effect" style="bottom: 0; right: -250px; background: radial-gradient(circle, rgba(0, 198, 255, 0.08), rgba(0, 198, 255, 0) 70%);"></div>
+<body class="antialiased selection:bg-accent selection:text-base">
+    <!--<canvas id="particle-network"></canvas>
 
-    <header class="bg-opacity-80 bg-[#0d122b] fixed w-full z-30 top-0 backdrop-blur-sm shadow-md shadow-cyan-500/10 h-16 md:h-20">
-        <div class="container mx-auto flex items-center justify-between h-full px-4">
-            <a href="index.html#hero" class="text-2xl font-bold text-gradient">Ankit Kumar</a>
-            <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-cyan-400 transition p-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation" style="min-width:44px;min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            <nav class="hidden md:block">
-                <ul class="flex items-center space-x-4 md:space-x-8 text-sm md:text-base">
-                    <li><a href="#about" class="hover:text-cyan-400 transition duration-300">About</a></li>
-                    <li><a href="#education" class="hover:text-cyan-400 transition duration-300">Education</a></li>
-                    <li><a href="#skills" class="hover:text-cyan-400 transition duration-300">Skills</a></li>
-                    <li><a href="certificates.html" class="hover:text-cyan-400 transition duration-300">Certificates</a></li>
-                    <li><a href="#contact" class="hover:text-cyan-400 transition duration-300">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <nav id="mobile-menu" class="md:hidden hidden bg-[#0d122b]/95 border-t border-slate-800">
-            <ul class="px-4 py-3 space-y-2 text-sm">
-                <li><a href="#about" class="block py-2 hover:text-cyan-400">About</a></li>
-                <li><a href="#education" class="block py-2 hover:text-cyan-400">Education</a></li>
-                <li><a href="#skills" class="block py-2 hover:text-cyan-400">Skills</a></li>
-                <li><a href="certificates.html" class="block py-2 hover:text-cyan-400">Certificates</a></li>
-                <li><a href="#contact" class="block py-2 hover:text-cyan-400">Contact</a></li>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="ambient-glow bg-white/10 w-[600px] h-[600px] top-[-200px] left-[-200px] animate-blob"></div>
+        <div class="ambient-glow bg-gray-500/10 w-[500px] h-[500px] bottom-[-100px] right-[-100px] animate-blob animation-delay-2000"></div>
+    </div>
+
+    <!-- Floating Navbar -->
+    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-2xl">
+        <nav class="glass-card rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+            <a href="#" class="text-accent font-bold tracking-tight text-lg interactive">AK.</a>
+            <ul class="flex items-center space-x-6 text-sm font-medium">
+                <li><a href="#about" class="hover:text-accent transition-colors interactive">About</a></li>
+                <li><a href="#education" class="hover:text-accent transition-colors interactive">Education</a></li>
+                <li><a href="#toolbox" class="hover:text-accent transition-colors interactive">Toolbox</a></li>
+                <li><a href="#work" class="hover:text-accent transition-colors interactive">Work</a></li>
+                <li><a href="certificates.html" class="hover:text-accent transition-colors interactive">Certificates</a></li>
+                <li><a href="#contact" class="hover:text-accent transition-colors interactive">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="pt-0 z-10 relative">
-        <section id="hero" class="hero-screen flex items-center">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12">
-                <div class="w-full md:w-3/5 text-center md:text-left flex flex-col items-center md:items-start md:ml-auto">
-                    <p class="text-lg md:text-xl text-cyan-400 mb-2">Hi, my name is</p>
-                    <h1 class="text-4xl md:text-7xl font-bold text-slate-200 mb-4">Ankit kumar.</h1>
-                    <h2 class="text-3xl md:text-6xl font-bold text-slate-400 mb-6">I build things for the web.</h2>
-                    <p class="max-w-2xl text-base md:text-lg text-slate-400 mt-0 mb-8 text-center md:text-left">
-                        I'm a <span class="typed-text font-semibold text-cyan-300"></span>, specializing in creating stunning and functional websites and applications.
-                    </p>
-                    <div class="social-links flex justify-center md:justify-start items-center space-x-4 mb-8 w-full md:w-auto">
-                        <a href="https://github.com/0ankitkumar0" class="text-slate-400 hover:text-cyan-400 transition duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/0ankitkumar0/" class="text-slate-400 hover:text-cyan-400 transition duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        </a>
-                        <a href="https://x.com/0ankit_singh0" class="text-slate-400 hover:text-cyan-400 transition duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-                        </a>
-                    
-                    </div>
-                    <a href="assets/images/Ankitresume.pdf" download="Ankitresume.pdf" class="glowing-btn inline-block self-center md:self-start">Download CV</a>
-                </div>
-                <div class="md:w-2/5 flex justify-center md:justify-end md:ml-auto pr-4 md:pr-8">
-                    <div class="relative w-60 h-60 sm:w-64 sm:h-64 md:w-80 md:h-80">
-                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-2xl opacity-50 animate-pulse"></div>
-                        <img src="assets/images/1760379457459.jpg" alt="Ankit Kumar profile portrait" class="relative rounded-full w-full h-full object-cover border-4 border-slate-700">
-                    </div>
+    <main class="relative z-10 container mx-auto px-6 pt-28 md:pt-32 pb-20 max-w-6xl">
+        
+        <!-- Hero Section -->
+        <section class="min-h-[70vh] flex flex-col md:flex-row justify-center md:justify-between items-center gap-12 reveal">
+            <!-- Hero Profile Image -->
+            <div class="w-full md:w-2/5 flex justify-center md:justify-start mt-12 md:mt-0 order-2 md:order-1">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 group interactive">
+                    <div class="absolute inset-0 bg-white rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 animate-pulse"></div>
+                    <img src="assets/images/1760379457459.jpg" onerror="this.src='https://images.unsplash.com/photo-1531297172867-4f54ed118e67?q=80&w=600&auto=format&fit=crop'" alt="Ankit Kumar profile portrait" class="relative rounded-full w-full h-full object-cover border-4 border-border shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-white/30 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] transition-all duration-500">
                 </div>
             </div>
-        </section>
 
-    <section id="about" class="py-20 fade-in-section scroll-mt-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-2">About Me</h2>
-                <div class="w-20 h-1 bg-cyan-400 mx-auto mb-12"></div>
-                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-                    <div class="md:w-1/3">
-                        <div class="rounded-lg overflow-hidden card p-2 shadow-xl shadow-cyan-500/10">
-                            <img src="https://placehold.co/400x400/0a192f/64ffda?text=Hello!" alt="John Doe" class="rounded-md w-full">
-                        </div>
-                    </div>
-                    <div class="md:w-2/3 text-lg text-slate-400">
-                        <p class="mb-4">
-                            Hello! I'm Ankit Kumar, a developer with a knack for creating impactful digital solutions. I believe in turning intricate challenges into beautiful, intuitive, and highly efficient experiences. My foundational skills were forged in 2024 through hands-on work with modern web technologies, including HTML, CSS, JavaScript, React.js, Next.js, and Tailwind CSS.
-                        </p>
-                        <p class="mb-4">
-                            My professional path has since evolved, allowing me to contribute to a variety of projects that span from dynamic web interfaces to sophisticated backend optimizations and real-time analytical systems. I am constantly pushing myself to master new technologies and embrace innovative approaches.
-                        </p>
-                        <p>
-                            Outside of coding, I enjoy exploring the vibrancy of the city, discovering new culinary delights, or unwinding with a captivating book.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <section id="education" class="py-20 bg-opacity-40 bg-[#080d20] fade-in-section scroll-mt-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-2">Educational Journey</h2>
-                <div class="w-20 h-1 bg-cyan-400 mx-auto mb-12"></div>
-                <div class="relative max-w-3xl mx-auto">
-                    <div class="hidden md:block absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/60 via-cyan-400/20 to-transparent"></div>
-
-                    <article class="relative pl-10 md:pl-24 pb-12">
-                        <span class="absolute left-0 md:left-3 top-1 flex h-4 w-4 items-center justify-center">
-                            <span class="h-3 w-3 rounded-full border border-cyan-300 bg-[#0d122b]"></span>
+            <!-- Text Content -->
+            <div class="flex-1 flex flex-col items-start text-center md:text-left order-1 md:order-2">
+                <div class="inline-block glass-card rounded-full px-4 py-1.5 mb-6 border border-white/10 mx-auto md:mx-0">
+                    <span class="flex items-center gap-2 text-sm text-accent">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span class="text-sm uppercase tracking-widest text-cyan-300">2007 &ndash; 2020</span>
-                        <h3 class="text-2xl font-semibold text-slate-200 mt-2">Matriculation &middot; A.R.S Public School</h3>
-                        <p class="text-slate-400">Bokaro &mdash; CBSE Board &mdash; 79%</p>
-                        <p class="text-slate-500 mt-3">Built a strong academic foundation, balancing classroom learning with curiosity for computers and creative problem solving.</p>
-                    </article>
-
-                    <article class="relative pl-10 md:pl-24 pb-12">
-                        <span class="absolute left-0 md:left-3 top-1 flex h-4 w-4 items-center justify-center">
-                            <span class="h-3 w-3 rounded-full border border-cyan-300 bg-[#0d122b]"></span>
-                        </span>
-                        <span class="text-sm uppercase tracking-widest text-cyan-300">2020 &ndash; 2022</span>
-                        <h3 class="text-2xl font-semibold text-slate-200 mt-2">Intermediate (Science &ndash; PCM) &middot; P.P.M Public School</h3>
-                        <p class="text-slate-400">Jehanabad &mdash; CBSE Board &mdash; 67%</p>
-                        <p class="text-slate-500 mt-3">Focused on physics, chemistry, and mathematics, strengthening analytical thinking while exploring design and development alongside studies.</p>
-                    </article>
-
-                    <article class="relative pl-10 md:pl-24">
-                        <span class="absolute left-0 md:left-3 top-1 flex h-4 w-4 items-center justify-center">
-                            <span class="h-3 w-3 rounded-full border border-cyan-300 bg-[#0d122b]"></span>
-                        </span>
-                        <span class="text-sm uppercase tracking-widest text-cyan-300">2022 &ndash; Present</span>
-                        <h3 class="text-2xl font-semibold text-slate-200 mt-2">B.Tech in 3D Animation &amp; Graphics &middot; B.P. Mandal College of Engineering</h3>
-                        <p class="text-slate-400">Madhepura &mdash; Bihar Engineering University &mdash; CGPA 7.92</p>
-                        <p class="text-slate-500 mt-3">Combining immersive graphics, storytelling, and full-stack development to craft engaging digital experiences and interactive worlds.</p>
-                    </article>
+                        Available for new opportunities
+                    </span>
                 </div>
-            </div>
-        </section>
-
-    <section id="skills" class="py-20 bg-opacity-50 bg-[#080d20] fade-in-section scroll-mt-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-2">My Skills</h2>
-                <div class="w-20 h-1 bg-cyan-400 mx-auto mb-12"></div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        <p class="font-semibold">HTML5</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                        <p class="font-semibold">CSS3</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9.5a2.5 2.5 0 0 1 0 5h-1.5a2.5 2.5 0 1 0 0-5h3a2.5 2.5 0 0 1 0 5h-1.5m1.5-5a2.5 2.5 0 0 0 0-5h-3a2.5 2.5 0 0 0 0 5h1.5"/></svg>
-                        <p class="font-semibold">JavaScript</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                        <p class="font-semibold">React</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3M5.636 5.636l-1.414-1.414M19.778 5.636l-1.414 1.414M18.364 19.778l-1.414-1.414M4.222 19.778l1.414-1.414M12 18a6 6 0 100-12 6 6 0 000 12z"></path></svg>
-                        <p class="font-semibold">Next.js</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        <p class="font-semibold">Tailwind CSS</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 5.25h15l-1.35 9.27a2 2 0 0 1-1.98 1.73H7.83a2 2 0 0 1-1.98-1.73L4.5 5.25Zm4 10.75L7 21h10l-1.5-5"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 9h6M9 12h6"></path></svg>
-                        <p class="font-semibold">Autodesk Maya</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4h16l-1.5 12h-13z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 12.5l4 3.75V20l-4-2.25L8 20v-3.75l4-3.75Z"></path></svg>
-                        <p class="font-semibold">Autodesk 3ds Max</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4 3 8l9 4 9-4-9-4Z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 12v8"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 10.5v6l5 2.5 5-2.5v-6"></path></svg>
-                        <p class="font-semibold">Blender</p>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 card rounded-lg">
-                        <svg class="w-16 h-16 mb-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2" ry="2" stroke-width="1.8"></rect><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 15h5a3 3 0 0 0 0-6H8v6Zm0-3h5"></path></svg>
-                        <p class="font-semibold">Adobe Photoshop</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <section id="projects" class="py-20 fade-in-section scroll-mt-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-2">My Projects</h2>
-                <div class="w-20 h-1 bg-cyan-400 mx-auto mb-12"></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Rakeopt -->
-                    <div class="card rounded-lg overflow-hidden flex flex-col">
-                        <img src="assets/images/Rakeopt.png" alt="Rakeopt project preview" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2 text-slate-200">Rakeopt</h3>
-                            <p class="text-slate-400 mb-4 flex-grow">AI-powered system for SAIL that generates optimal railway rake plans, cutting freight and demurrage by optimizing load clubbing, sequencing, and constraints at Bokaro Steel Plant.</p>
-                            <div class="mt-auto flex justify-start items-center">
-                                <a href="https://rakeopt.vercel.app/" target="_blank" rel="noopener" class="glowing-btn text-sm py-2 px-4">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- BusPakdo -->
-                    <div class="card rounded-lg overflow-hidden flex flex-col">
-                        <img src="assets/images/buspakdo.png" alt="BusPakdo project preview" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2 text-slate-200">BusPakdo</h3>
-                            <p class="text-slate-400 mb-4 flex-grow">Real-time bus tracking for Punjab—search by route or number, see live GPS location, and get accurate ETAs to simplify daily commutes.</p>
-                            <div class="mt-auto flex justify-start items-center">
-                                <a href="https://buspakdo.vercel.app/" target="_blank" rel="noopener" class="glowing-btn text-sm py-2 px-4">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PedestrianDetect -->
-                    <div class="card rounded-lg overflow-hidden flex flex-col">
-                        <img src="assets/images/pedestariandetect.png" alt="PedestrianDetect project preview" class="w-full h-56 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2 text-slate-200">PedestrianDetect</h3>
-                            <p class="text-slate-400 mb-4 flex-grow">Computer vision app that detects pedestrians in videos with HOG + OpenCV. Upload a clip and get people detections visualized.</p>
-                            <div class="mt-auto flex justify-start items-center">
-                                <a href="https://pedestriandetect.vercel.app/" target="_blank" rel="noopener" class="glowing-btn text-sm py-2 px-4">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <section id="contact" class="py-20 text-center fade-in-section scroll-mt-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-2">Get In Touch</h2>
-                <div class="w-20 h-1 bg-cyan-400 mx-auto mb-8"></div>
-                <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-8">
-                    I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi, I'll try my best to get back to you!
+                
+                <h1 class="text-5xl md:text-8xl font-extrabold text-accent tracking-tighter leading-[1.1] mb-6 text-glow">
+                    Creative<br>
+                    <span class="text-green-400">Developer</span><br>
+                    & 3D Artist.
+                </h1>
+                
+                <p class="text-lg md:text-2xl max-w-2xl text-muted font-light mb-10 mx-auto md:mx-0">
+                    Hi, I'm <strong class="text-accent font-semibold">Ankit Kumar</strong>. I bridge the gap between complex engineering and immersive digital art.
                 </p>
-                <a href="mailto:ankitkumarboxer23@gmail.com" class="glowing-btn text-lg inline-block">Say Hello</a>
+
+                <div class="flex items-center justify-center md:justify-start gap-4 w-full md:w-auto">
+                    <a href="#work" class="bg-accent text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors interactive">See my work</a>
+                    <a href="assets/images/Ankitresume.pdf" download class="glass-card px-8 py-4 rounded-full font-semibold text-accent hover:bg-white/10 transition-colors interactive">Download CV</a>
+                </div>
             </div>
+        </section>
+
+        <!-- Bento Box Section (About) -->
+        <section id="about" class="py-20">
+            <h2 class="text-3xl font-bold text-accent mb-10 tracking-tight reveal">Behind the code</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-3xl p-8 md:col-span-3 bento-hover reveal flex flex-col justify-between">
+                    <div>
+                        <svg class="w-8 h-8 text-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h3 class="text-2xl font-bold text-accent mb-4">My Story</h3>
+                        <p class="text-muted leading-relaxed mb-4">
+                            I’m Ankit Kumar — a developer and visual creator who understands products from multiple dimensions.
+                        </p>
+                        <p class="text-muted leading-relaxed mb-4">
+                            With experience in development, graphic design, 3D modeling, and animation, I approach every project with a complete perspective — from structure and performance to visuals and motion. This allows me to solve problems not just technically, but creatively and strategically.
+                        </p>
+                        <p class="text-muted leading-relaxed mb-4">
+                            I don't just build websites — I craft immersive digital experiences that look exceptional, perform seamlessly, and communicate clearly. My ability to combine technology with design thinking helps me create all-in-one solutions that feel polished, modern, and purpose-driven.
+                        </p>
+                        <p class="text-muted leading-relaxed">
+                            I enjoy working in fast-moving startup environments where ideas need both innovation and execution. For me, building is not just about making things work — it’s about making them remarkable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Journey Section -->
+        <section id="education" class="py-15 scroll-mt-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-accent text-center mb-2 tracking-tight reveal">Educational Journey</h2>
+                <p class="text-muted text-center mb-12 max-w-2xl mx-auto reveal">
+                    A timeline of growth, exploration, and continuous learning.
+                </p>
+                
+                <div class="timeline relative max-w-3xl mx-auto">
+                    <!-- Vertical Timeline Line -->
+                    <div class="hidden md:block absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-white/40 via-white/10 to-transparent"></div>
+
+                    <!-- Item 1 -->
+                    <article class="timeline-item relative pl-10 md:pl-24 reveal">
+                        <div class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
+                            <span class="h-3 w-3 rounded-full border border-accent bg-base"></span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2022 – Present</span>
+                            <h3 class="text-2xl font-bold text-accent mt-2 tracking-tight">B.Tech in 3D Animation & Graphics · B.P. Mandal College of Engineering</h3>
+                            <p class="timeline-meta text-muted font-medium">Madhepura — Bihar Engineering University — CGPA 8.14</p>
+                            <p class="text-muted mt-3 leading-relaxed">
+                                Integrating immersive graphics, animation, and full-stack development.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Item 2 -->
+                    <article class="timeline-item relative pl-10 md:pl-24 reveal">
+                        <div class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
+                            <span class="h-3 w-3 rounded-full border border-accent bg-base"></span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2020 – 2022</span>
+                            <h3 class="text-2xl font-bold text-accent mt-2">Intermediate (Science – PCM) · P.P.M Public School</h3>
+                            <p class="timeline-meta text-muted font-medium">Jehanabad — CBSE Board — 67%</p>
+                            <p class="text-muted mt-3 leading-relaxed">
+                                Strengthened analytical thinking through physics and mathematics.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Item 3 -->
+                    <article class="timeline-item relative pl-10 md:pl-24 pb-12 reveal">
+                        <div class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
+                            <span class="h-3 w-3 rounded-full border border-accent bg-base"></span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2007 – 2020</span>
+                            <h3 class="text-2xl font-bold text-accent mt-2">Matriculation · A.R.S Public School</h3>
+                            <p class="timeline-meta text-muted font-medium">Bokaro — CBSE Board — 79%</p>
+                            <p class="text-muted mt-3 leading-relaxed">
+                                Built a strong academic foundation.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolbox Section -->
+        <section id="toolbox" class="py-20 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-accent text-center mb-2 tracking-tight reveal">Toolbox</h2>
+            <p class="text-muted text-center mb-12 max-w-2xl mx-auto reveal">
+                The instruments I use to craft digital experiences.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tech Stack -->
+                <div class="glass-card rounded-3xl p-8 reveal bento-hover">
+                    <div class="flex items-center gap-3 mb-6">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h3 class="text-xl font-bold text-accent">Tech Stack</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">HTML</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">CSS</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">JavaScript</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">React.js</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Next.js</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Tailwind CSS</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">shadcn/ui</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Three.js</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Node.js</span>
+                    </div>
+                </div>
+
+                <!-- 3D & Motion Design -->
+                <div class="glass-card rounded-3xl p-8 reveal bento-hover">
+                    <div class="flex items-center gap-3 mb-6">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <h3 class="text-xl font-bold text-accent">3D & Motion</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Blender</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Autodesk Maya</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">3ds Max</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">ZBrush</span>
+                    </div>
+                </div>
+
+                <!-- Graphic & Visual Design -->
+                <div class="glass-card rounded-3xl p-8 reveal bento-hover">
+                    <div class="flex items-center gap-3 mb-6">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <h3 class="text-xl font-bold text-accent">Graphic Design</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Adobe Photoshop</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Adobe Illustrator</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">CorelDRAW</span>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Canva</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      <!-- Selected Projects -->
+        <section id="work" class="py-20">
+            <h2 class="text-3xl font-bold text-accent mb-10 tracking-tight reveal">Featured Work</h2>
+            
+            <div class="space-y-12">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                    <div class="p-10 flex flex-col justify-center">
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">01 / Logistics AI</span>
+                        <h3 class="text-3xl font-bold text-accent mb-4">Rakeopt</h3>
+                        <p class="text-muted mb-8 leading-relaxed">An AI-powered system designed for SAIL. It generates optimal railway rake plans, significantly cutting freight and demurrage costs by optimizing load clubbing, sequencing, and constraints at the Bokaro Steel Plant.</p>
+                        <div class="flex gap-3 mb-8 flex-wrap">
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">React</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">AI Integration</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Optimization Algorithms</span>
+                        </div>
+                        <a href="https://rakeopt.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                    <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto">
+                        <img src="assets/images/Rakeopt.png" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop'" alt="Rakeopt" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                    <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto order-2 md:order-1">
+                        <img src="assets/images/buspakdo.png" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop'" alt="BusPakdo" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                    </div>
+                    <div class="p-10 flex flex-col justify-center order-1 md:order-2">
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">02 / Transit App</span>
+                        <h3 class="text-3xl font-bold text-accent mb-4">BusPakdo</h3>
+                        <p class="text-muted mb-8 leading-relaxed">A real-time bus tracking application for Punjab. Users can search by route or number, view live GPS locations, and receive accurate ETAs to dramatically simplify their daily commutes.</p>
+                        <div class="flex gap-3 mb-8 flex-wrap">
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Next.js</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">GPS/Maps API</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Real-time DB</span>
+                        </div>
+                        <a href="https://buspakdo.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                    <div class="p-10 flex flex-col justify-center">
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">03 / Computer Vision</span>
+                        <h3 class="text-3xl font-bold text-accent mb-4">PedestrianDetect</h3>
+                        <p class="text-muted mb-8 leading-relaxed">A computer vision web application that detects pedestrians in video feeds utilizing HOG descriptors and OpenCV. Users can upload clips and receive instant visual detections mapped over the footage.</p>
+                        <div class="flex gap-3 mb-8 flex-wrap">
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Python</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">OpenCV</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Web API</span>
+                        </div>
+                        <a href="https://pedestriandetect.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                    <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto">
+                        <img src="assets/images/pedestariandetect.png" onerror="this.src='https://images.unsplash.com/photo-1551488828-5e4536761005?q=80&w=800&auto=format&fit=crop'" alt="PedestrianDetect" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 flex flex-col items-center justify-center text-center reveal">
+            <h2 class="text-6xl md:text-8xl font-black text-accent tracking-tighter mb-8 interactive">Contact Now.</h2>
+            <p class="text-xl text-muted max-w-lg mb-12">
+                Currently looking for new opportunities.
+            </p>
+            <a href="mailto:ankitkumarboxer23@gmail.com" class="relative group inline-block interactive">
+                <div class="absolute -inset-1 bg-gradient-to-r from-white/20 to-white/0 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div class="relative px-10 py-5 bg-accent text-black text-xl font-bold rounded-full flex items-center gap-3 transition-transform group-hover:scale-105">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Let's Talk
+                </div>
+            </a>
         </section>
     </main>
 
-    <!-- Scroll to top button -->
-    <button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-    </button>
-
-    <!-- Image lightbox -->
-    <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-        <img src="" alt="Lightbox image">
-    </div>
-
-    <footer class="py-6 text-center text-slate-500 relative z-10">
-        <p>Designed &amp; Built by Ankit kumar</p>
+    <footer class="border-t border-border mt-10 z-10 relative">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between">
+            <p class="text-muted text-sm mb-4 md:mb-0">© 2024 Ankit Kumar. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="https://github.com/0ankitkumar0" class="text-muted hover:text-accent transition-colors interactive">GitHub</a>
+                <a href="https://www.linkedin.com/in/0ankitkumar0/" class="text-muted hover:text-accent transition-colors interactive">LinkedIn</a>
+                <a href="https://x.com/0ankit_singh0" class="text-muted hover:text-accent transition-colors interactive">X/Twitter</a>
+            </div>
+        </div>
     </footer>
 
+    <!-- External Interactive JS -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
