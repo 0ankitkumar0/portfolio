@@ -32,6 +32,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 3. Mobile Hamburger Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuClose = document.getElementById('menu-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function openMobileMenu() {
+        if (mobileMenu) {
+            mobileMenu.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+            if (menuToggle) menuToggle.classList.add('active');
+        }
+    }
+
+    function closeMobileMenu() {
+        if (mobileMenu) {
+            mobileMenu.classList.remove('menu-open');
+            document.body.style.overflow = '';
+            if (menuToggle) menuToggle.classList.remove('active');
+        }
+    }
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', openMobileMenu);
+    }
+    if (menuClose) {
+        menuClose.addEventListener('click', closeMobileMenu);
+    }
+    // Close menu when a nav link is tapped
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
     // 2. Intersection Observer for Scroll Reveals
     const revealElements = document.querySelectorAll('.reveal');
     
@@ -64,8 +97,9 @@ const canvas = document.getElementById("particle-network");
 const ctx = canvas.getContext("2d");
 
 let particles = [];
-const particleCount = 72;
-const maxDistance = 120;
+const isMobile = window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window;
+const particleCount = isMobile ? 36 : 72;
+const maxDistance = isMobile ? 90 : 120;
 const mouse = { x: null, y: null };
 const repelRadius = 100;
 
@@ -80,6 +114,19 @@ window.addEventListener("mousemove", (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 });
+
+// Touch support for mobile devices
+window.addEventListener("touchmove", (e) => {
+    if (e.touches.length > 0) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+    }
+}, { passive: true });
+
+window.addEventListener("touchend", () => {
+    mouse.x = null;
+    mouse.y = null;
+}, { passive: true });
 
 class Particle {
     constructor() {

@@ -97,7 +97,7 @@ body.hovering .cursor-outline {
 
 /* Glowing text effect (High-impact titles) */
 .text-glow {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 /* Ambient Background Glows */
@@ -224,9 +224,114 @@ body.hovering .cursor-outline {
     .timeline-dot {
         left: -6px;
     }
-    cursor: auto; /* Show default cursor on mobile devices */
+}
+
+/* ===== MOBILE TOUCH OPTIMIZATIONS ===== */
+
+/* Restore default cursor on touch devices */
+@media (pointer: coarse) {
+    body {
+        cursor: auto !important;
+    }
     .cursor-dot, .cursor-outline {
-        display: none;
+        display: none !important;
+    }
+}
+
+/* Touch-friendly active states (replace hover on mobile) */
+@media (hover: none) and (pointer: coarse) {
+    .glass-card:hover {
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+        background: rgba(30, 30, 30, 0.4);
+    }
+    .glass-card:active {
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.1);
+        background: rgba(40, 40, 40, 0.5);
+        transform: scale(0.98);
+        transition: all 0.15s ease;
+    }
+    .bento-hover:hover {
+        transform: none;
+    }
+    .bento-hover:active {
+        transform: scale(0.98);
+        transition: all 0.15s ease;
+    }
+    .timeline-item:hover .timeline-content {
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+    }
+    .timeline-item:active .timeline-content {
+        transform: scale(0.98);
+        border-color: rgba(255, 255, 255, 0.15);
+        transition: all 0.15s ease;
+    }
+    #toolbox span:hover {
+        transform: none !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        box-shadow: none !important;
+    }
+    #toolbox span:active {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        transform: scale(0.95) !important;
+        transition: all 0.1s ease !important;
+    }
+}
+
+/* Minimum tap target sizes for mobile */
+@media (max-width: 768px) {
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    .mobile-nav-link {
+        padding: 8px 16px;
+        display: inline-block;
+    }
+}
+
+/* Hamburger animation when menu is open */
+#menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+#menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+#menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(2px, -2px);
+    width: 1.25rem;
+}
+
+/* Mobile menu visible state */
+#mobile-menu.menu-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+}
+
+/* Smooth touch scrolling */
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent iOS tap highlight */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Safe area padding for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+    footer {
+        padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    }
+    header {
+        top: calc(24px + env(safe-area-inset-top));
     }
 }
 
