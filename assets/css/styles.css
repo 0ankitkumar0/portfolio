@@ -291,7 +291,7 @@ body.hovering .cursor-outline {
         min-width: 44px;
     }
     .mobile-nav-link {
-        padding: 8px 16px;
+        padding: 6px 16px;
         display: inline-block;
     }
 }
