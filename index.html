@@ -89,22 +89,22 @@
                 <li><a href="#contact" class="hover:text-accent transition-colors interactive">Contact</a></li>
             </ul>
         </nav>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="md:hidden fixed inset-0 top-0 left-0 w-full h-full bg-base/95 backdrop-blur-xl z-[100] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500" style="transform: translateY(-20px);">
-            <button id="menu-close" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full glass-card" aria-label="Close menu">
-                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <ul class="flex flex-col items-center gap-4 text-lg font-semibold">
-                <li><a href="#about" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">About</a></li>
-                <li><a href="#education" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Education</a></li>
-                <li><a href="#toolbox" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Toolbox</a></li>
-                <li><a href="#work" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Work</a></li>
-                <li><a href="certificates.html" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Certificates</a></li>
-                <li><a href="#contact" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Contact</a></li>
-            </ul>
-        </div>
     </header>
+
+    <!-- Mobile Menu Overlay (outside header to fix iOS/Android fixed positioning) -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 w-full h-full z-[999] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-400" style="background: rgba(10,10,10,0.97); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);">
+        <button id="menu-close" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full glass-card" aria-label="Close menu">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <ul class="flex flex-col items-center gap-5 text-xl font-semibold">
+            <li><a href="#about" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">About</a></li>
+            <li><a href="#education" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Education</a></li>
+            <li><a href="#toolbox" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Toolbox</a></li>
+            <li><a href="#work" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Work</a></li>
+            <li><a href="certificates.html" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Certificates</a></li>
+            <li><a href="#contact" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Contact</a></li>
+        </ul>
+    </div>
 
     <main class="relative z-10 container mx-auto px-6 pt-28 md:pt-32 pb-20 max-w-6xl">
         

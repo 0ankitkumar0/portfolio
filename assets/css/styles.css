@@ -312,7 +312,6 @@ body.hovering .cursor-outline {
 #mobile-menu.menu-open {
     opacity: 1 !important;
     pointer-events: auto !important;
-    transform: translateY(0) !important;
 }
 
 /* Smooth touch scrolling */
