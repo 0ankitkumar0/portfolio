@@ -61,8 +61,8 @@
         <div class="ambient-glow bg-gray-500/10 w-[500px] h-[500px] bottom-[-100px] right-[-100px] animate-blob animation-delay-2000"></div>
     </div>
 
-    <!-- Floating Navbar -->
-    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+   <!-- Floating Navbar -->
+    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-2xl">
         <nav class="glass-card rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
             <a href="index.html" class="text-accent font-bold tracking-tight text-lg interactive">AK.</a>
             
@@ -74,12 +74,13 @@
             </button>
 
             <!-- Desktop Nav -->
-            <ul class="hidden md:flex items-center space-x-4 md:space-x-6 text-xs md:text-sm font-medium">
+           <ul class="flex items-center space-x-3 md:space-x-6 text-[10px] md:text-sm font-medium">
                 <li><a href="index.html#about" class="hover:text-accent transition-colors interactive">About</a></li>
                 <li><a href="index.html#education" class="hover:text-accent transition-colors interactive">Education</a></li>
-                <li><a href="index.html#skills" class="hover:text-accent transition-colors interactive">Skills</a></li>
+                <li><a href="index.html#toolbox" class="hover:text-accent transition-colors interactive">Toolbox</a></li>
+                <li><a href="gallery.html" class="text-accent font-bold interactive">Gallery</a></li>
                 <li><a href="index.html#work" class="hover:text-accent transition-colors interactive">Work</a></li>
-                <li><a href="certificates.html" class="text-accent font-bold interactive">Certificates</a></li>
+                <li><a href="certificates.html" class="hover:text-accent transition-colors interactive">Certificates</a></li>
                 <li><a href="index.html#contact" class="hover:text-accent transition-colors interactive">Contact</a></li>
             </ul>
         </nav>
@@ -120,6 +121,20 @@
         <!-- Certificates Grid -->
         <section id="certificates" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
+            <!-- Ink Internship Certificate -->
+            <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
+                <div class="relative overflow-hidden h-56">
+                    <img src="assets/images/inkinternship.jpg" alt="Ink Internship Certificate" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h2 class="text-xl font-bold text-accent mb-3">Ink Internship</h2>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">One-month professional internship at ink.company, focusing on design fundamentals, creativity, and executing assigned design tasks.</p>
+                    <a href="assets/images/inkinternship.jpg" target="_blank" class="inline-flex items-center gap-2 text-accent text-sm font-semibold hover:opacity-70 transition-opacity">
+                        View Credential <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
             <!-- Innovvate Certificate -->
             <article class="glass-card rounded-3xl overflow-hidden bento-hover reveal flex flex-col group interactive">
                 <div class="relative overflow-hidden h-56">

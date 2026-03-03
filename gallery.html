@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Ankit Kumar - Graphic Design Gallery</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        base: '#0a0a0a',
+                        surface: '#121212',
+                        surface2: '#1E1E1E',
+                        accent: '#FFFFFF',
+                        muted: '#A0A0A0',
+                        border: '#333333'
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="antialiased selection:bg-accent selection:text-base">
+
+    <!-- Interactive Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="ambient-glow bg-white/5 w-[600px] h-[600px] top-[-200px] left-[-200px] animate-blob"></div>
+        <div class="ambient-glow bg-gray-500/5 w-[500px] h-[500px] bottom-[-100px] right-[-100px] animate-blob animation-delay-2000"></div>
+    </div>
+
+    <!-- Floating Navbar (Synced with Index) -->
+    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-2xl">
+        
+        <nav class="glass-card rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+            <a href="index.html" class="text-accent font-bold tracking-tight text-lg interactive">AK.</a>
+            
+             <!-- Hamburger Button (mobile only) -->
+            <button id="menu-toggle" class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle menu">
+                <span class="hamburger-line block w-5 h-0.5 bg-accent mb-1 transition-all duration-300"></span>
+                <span class="hamburger-line block w-5 h-0.5 bg-accent mb-1 transition-all duration-300"></span>
+                <span class="hamburger-line block w-3.5 h-0.5 bg-accent transition-all duration-300"></span>
+            </button>
+
+            <ul class="flex items-center space-x-3 md:space-x-6 text-[10px] md:text-sm font-medium">
+                <li><a href="index.html#about" class="hover:text-accent transition-colors interactive">About</a></li>
+                <li><a href="index.html#education" class="hover:text-accent transition-colors interactive">Education</a></li>
+                <li><a href="index.html#toolbox" class="hover:text-accent transition-colors interactive">Toolbox</a></li>
+                <li><a href="gallery.html" class="text-accent font-bold interactive">Gallery</a></li>
+                <li><a href="index.html#work" class="hover:text-accent transition-colors interactive">Work</a></li>
+                <li><a href="certificates.html" class="hover:text-accent transition-colors interactive">Certificates</a></li>
+                <li><a href="index.html#contact" class="hover:text-accent transition-colors interactive">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="relative z-10 container mx-auto px-6 pt-16 md:pt-20 pb-8 max-w-6xl">
+        
+        <!-- Page Header -->
+        <section class="mb-6 reveal">
+            <div class="inline-block glass-card rounded-full px-4 py-1.5 mb-6 border border-white/10">
+                <span class="text-xs font-bold text-accent uppercase tracking-widest">Visual Portfolio</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-accent tracking-tighter leading-tight mb-6 text-glow">
+                Graphic Design<br>
+                <span class="text-muted font-light">Showcase.</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl text-muted font-light leading-relaxed">
+                Exploring the intersection of geometry, digital art, and 3D visualization. 
+                A collection of my recent graphic designs and creative experiments.
+            </p>
+        </section>
+
+        <!-- Feature Sliding Gallery -->
+        <section class="mb-20 reveal">
+            <div class="relative group h-[300px] md:h-[450px] glass-card rounded-[2rem] overflow-hidden shadow-2xl bg-black/50">
+                <!-- Slider Wrapper -->
+                <div id="gallery-slider" class="flex h-full transition-transform duration-700 ease-in-out">
+                    <!-- Slide 1 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="assets/graphicsgallery/monster.png" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-contain p-4" alt="Cyberpunk Vision">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 md:p-12">
+                            <h3 class="text-3xl font-bold text-accent mb-2">Verdant Peeker</h3>
+                            <p class="text-muted max-w-md">A vibrant, character-driven digital illustration of a wide-eyed lime monster</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="assets/graphicsgallery/rishimunni.png" onerror="this.src='https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-contain p-4" alt="Minimalist Geometry">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 md:p-12">
+                            <h3 class="text-3xl font-bold text-accent mb-2">The Eternal Monk</h3>
+                            <p class="text-muted max-w-md">A minimalist vector illustration of a meditating skeleton in saffron robes, exploring the eternal balance between mortality and mindfulness.</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="assets/graphicsgallery/hanumanji.png" onerror="this.src='https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1200&auto=format&fit=crop'" class="w-full h-full object-contain p-4" alt="Abstract Textures">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 md:p-12">
+                            <h3 class="text-3xl font-bold text-accent mb-2">Urban Bajrangi</h3>
+                            <p class="text-muted max-w-md">A powerful fusion of traditional iconography and modern street style, featuring a hooded Hanuman silhouette integrated with a dynamic Devanagari typographic backdrop.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <button id="prev-slide" class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-card flex items-center justify-center text-accent interactive opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button id="next-slide" class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-card flex items-center justify-center text-accent interactive opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+
+                <!-- Dots -->
+                <div id="slider-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+                    <button class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300" data-index="0"></button>
+                    <button class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300" data-index="1"></button>
+                    <button class="slider-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300" data-index="2"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discovery Grid -->
+        <h2 class="text-3xl font-bold text-accent mb-10 tracking-tight reveal">All Designs</h2>
+        <section id="discovery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-20">
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/12.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design 12">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%201%40mahi.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Mahi">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%201%40virat.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Virat">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%201%40WEIRD.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Weird">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/hanumanji.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design X">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%201%40x2.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design X2">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%201%40x21.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design X21">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%201DON%27T.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Don't">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/rishimunni.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Muni">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%202%40MTH.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="MTH">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%202%40x13.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design X13">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%202%40x2.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design 2X2">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%203%404x.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design 4X">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%203%40x13.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Design 3X13">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/monster.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Monster">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%203neversurrender.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Never Surrender">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%205%40LNE.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="LNE 5">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Asset%206%40LNE.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="LNE 6">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/burnoutback.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Burnout Back">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Car.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Car">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/HOWLER.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Howler">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Orange%20%26%20White%20Gradient%20Grunge%20Sculpture%20Illustrative%20T-shirt.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Gradient Grunge T-shirt">
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden bento-hover reveal group interactive aspect-square relative">
+                <img src="assets/graphicsgallery/Untitled%20design.png" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-2" alt="Untitled Design">
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer same as index... -->
+
+    <!-- External Interactive JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Auto-sliding gallery with manual controls
+        (() => {
+            const slider = document.getElementById('gallery-slider');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const totalSlides = dots.length;
+
+            let current = 0;
+            let autoSlideInterval = null;
+            let resumeTimeout = null;
+            const autoSlideDelay = 5000;
+            function goToSlide(index) {
+                current = (index + totalSlides) % totalSlides;
+                slider.style.transform = `translateX(-${current * 100}%)`;
+                updateDots();
+            }
+
+            function updateDots() {
+                dots.forEach((dot, i) => {
+                    if (i === current) {
+                        dot.classList.add('bg-accent', 'scale-125');
+                        dot.classList.remove('bg-white/40');
+                    } else {
+                        dot.classList.remove('bg-accent', 'scale-125');
+                        dot.classList.add('bg-white/40');
+                    }
+                });
+            }
+
+            function nextSlide() { goToSlide(current + 1); }
+            function prevSlide() { goToSlide(current - 1); }
+
+            // Auto slide
+            function startAutoSlide() {
+                stopAutoSlide();
+                autoSlideInterval = setInterval(() => {
+                    nextSlide();
+                }, autoSlideDelay);
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+            }
+
+            // Manual controls — pause auto, then resume after delay
+            function manualControl(action) {
+                stopAutoSlide();
+                if (resumeTimeout) clearTimeout(resumeTimeout);
+                action();
+                resumeTimeout = setTimeout(() => {
+                    startAutoSlide();
+                }, 8000);
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', () => manualControl(nextSlide));
+            prevBtn.addEventListener('click', () => manualControl(prevSlide));
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.dataset.index);
+                    manualControl(() => goToSlide(index));
+                });
+            });
+
+            // Pause on hover
+            const sliderContainer = slider.parentElement;
+            sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+            sliderContainer.addEventListener('mouseleave', startAutoSlide);
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            sliderContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoSlide();
+            }, { passive: true });
+
+            sliderContainer.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) nextSlide(); else prevSlide();
+                }
+                if (resumeTimeout) clearTimeout(resumeTimeout);
+                resumeTimeout = setTimeout(startAutoSlide, 8000);
+            }, { passive: true });
+
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') manualControl(nextSlide);
+                if (e.key === 'ArrowLeft') manualControl(prevSlide);
+            });
+
+            // Initialize
+            goToSlide(0);
+            startAutoSlide();
+        })();
+    </script>
+</body>
+</html>
