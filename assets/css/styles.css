@@ -355,6 +355,11 @@ html {
     pointer-events: none;
 }
 
+/* Gallery slider descriptions — force white */
+#gallery-slider p {
+    color: #ffffff !important;
+}
+
 /* Gallery slider mobile optimizations */
 @media (max-width: 768px) {
     #gallery-slider .text-3xl {
