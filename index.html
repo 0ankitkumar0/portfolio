@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -9,7 +10,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <title>Ankit Kumar - Creative Developer & 3D Artist</title>
-    
+
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,11 +50,13 @@
     </script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body class="antialiased selection:bg-accent selection:text-base">
     <!--<canvas id="particle-network"></canvas>
 
@@ -64,88 +67,121 @@
     <!-- Ambient Background -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div class="ambient-glow bg-white/10 w-[600px] h-[600px] top-[-200px] left-[-200px] animate-blob"></div>
-        <div class="ambient-glow bg-gray-500/10 w-[500px] h-[500px] bottom-[-100px] right-[-100px] animate-blob animation-delay-2000"></div>
+        <div
+            class="ambient-glow bg-gray-500/10 w-[500px] h-[500px] bottom-[-100px] right-[-100px] animate-blob animation-delay-2000">
+        </div>
     </div>
 
     <!-- Floating Navbar -->
-    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-2xl">
+    <header class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[95%] md:w-[90%] max-w-4xl lg:max-w-5xl">
         <nav class="glass-card rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
             <a href="#" class="text-accent font-bold tracking-tight text-lg interactive">AK.</a>
-            
+
             <!-- Hamburger Button (mobile only) -->
-            <button id="menu-toggle" class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle menu">
+            <button id="menu-toggle"
+                class="lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Toggle menu">
                 <span class="hamburger-line block w-5 h-0.5 bg-accent mb-1 transition-all duration-300"></span>
                 <span class="hamburger-line block w-5 h-0.5 bg-accent mb-1 transition-all duration-300"></span>
                 <span class="hamburger-line block w-3.5 h-0.5 bg-accent transition-all duration-300"></span>
             </button>
 
             <!-- Desktop Nav -->
-            <ul class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <ul class="hidden lg:flex items-center space-x-4 xl:space-x-6 text-sm font-medium">
                 <li><a href="#about" class="hover:text-accent transition-colors interactive">About</a></li>
                 <li><a href="#education" class="hover:text-accent transition-colors interactive">Education</a></li>
                 <li><a href="#toolbox" class="hover:text-accent transition-colors interactive">Toolbox</a></li>
                 <li><a href="gallery.html" class="hover:text-accent transition-colors interactive">Gallery</a></li>
                 <li><a href="#work" class="hover:text-accent transition-colors interactive">Work</a></li>
-                
-                <li><a href="certificates.html" class="hover:text-accent transition-colors interactive">Certificates</a></li>
+                <li><a href="#experience" class="hover:text-accent transition-colors interactive">Experience</a></li>
+                <li><a href="certificates.html" class="hover:text-accent transition-colors interactive">Certificates</a>
+                </li>
                 <li><a href="#contact" class="hover:text-accent transition-colors interactive">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Mobile Menu Overlay (outside header to fix iOS/Android fixed positioning) -->
-    <div id="mobile-menu" class="md:hidden fixed inset-0 w-full h-full z-[999] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-400" style="background: rgba(10,10,10,0.97); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);">
-        <button id="menu-close" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full glass-card" aria-label="Close menu">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <div id="mobile-menu"
+        class="lg:hidden fixed inset-0 w-full h-full z-[999] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-400"
+        style="background: rgba(10,10,10,0.97); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);">
+        <button id="menu-close"
+            class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full glass-card"
+            aria-label="Close menu">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
         </button>
         <ul class="flex flex-col items-center gap-5 text-xl font-semibold">
-            <li><a href="#about" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">About</a></li>
-            <li><a href="#education" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Education</a></li>
-            <li><a href="#toolbox" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Toolbox</a></li>
-            <li><a href="gallery.html" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Gallery</a></li>
+            <li><a href="#about" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">About</a>
+            </li>
+            <li><a href="#education"
+                    class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Education</a></li>
+            <li><a href="#toolbox"
+                    class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Toolbox</a></li>
+            <li><a href="gallery.html"
+                    class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Gallery</a></li>
             <li><a href="#work" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Work</a></li>
-            <li><a href="certificates.html" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Certificates</a></li>
-            <li><a href="#contact" class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Contact</a></li>
+            <li><a href="#experience"
+                    class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Experience</a></li>
+            <li><a href="certificates.html"
+                    class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Certificates</a></li>
+            <li><a href="#contact"
+                    class="mobile-nav-link text-accent hover:text-green-400 transition-colors">Contact</a></li>
         </ul>
     </div>
 
     <main class="relative z-10 container mx-auto px-6 pt-28 md:pt-32 pb-20 max-w-6xl">
-        
+
         <!-- Hero Section -->
-        <section class="min-h-[70vh] flex flex-col md:flex-row justify-center md:justify-between items-center gap-8 md:gap-12 reveal">
+        <section
+            class="min-h-[70vh] flex flex-col md:flex-row justify-center md:justify-between items-center gap-8 md:gap-12 reveal">
             <!-- Hero Profile Image -->
             <div class="w-full md:w-2/5 flex justify-center md:justify-start mt-4 md:mt-0 order-1 md:order-1">
                 <div class="relative w-64 h-64 md:w-80 md:h-80 group interactive">
-                    <div class="absolute inset-0 bg-white rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 animate-pulse"></div>
-                    <img src="assets/images/1760379457459.jpg" onerror="this.src='https://images.unsplash.com/photo-1531297172867-4f54ed118e67?q=80&w=600&auto=format&fit=crop'" alt="Ankit Kumar profile portrait" class="relative rounded-full w-full h-full object-cover border-4 border-border shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-white/30 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-white rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 animate-pulse">
+                    </div>
+                    <img src="assets/images/1760379457459.jpg"
+                        onerror="this.src='https://images.unsplash.com/photo-1531297172867-4f54ed118e67?q=80&w=600&auto=format&fit=crop'"
+                        alt="Ankit Kumar profile portrait"
+                        class="relative rounded-full w-full h-full object-cover border-4 border-border shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-white/30 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] transition-all duration-500">
                 </div>
             </div>
 
             <!-- Text Content -->
             <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-2">
-                <div class="inline-block glass-card rounded-full px-4 py-1.5 mb-6 border border-white/10 mx-auto md:mx-0">
+                <div
+                    class="inline-block glass-card rounded-full px-4 py-1.5 mb-6 border border-white/10 mx-auto md:mx-0">
                     <span class="flex items-center gap-2 text-sm text-accent">
                         <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
                         Available for new opportunities
                     </span>
                 </div>
-                
-                <h1 class="text-5xl md:text-8xl font-extrabold text-accent tracking-tighter leading-[1.1] mb-6 text-glow">
+
+                <h1
+                    class="text-5xl md:text-8xl font-extrabold text-accent tracking-tighter leading-[1.1] mb-6 text-glow">
                     Creative<br>
                     <span class="text-green-400">Developer</span><br>
                     & 3D Artist.
                 </h1>
-                
+
                 <p class="text-lg md:text-2xl max-w-2xl text-muted font-light mb-10 mx-auto md:mx-0">
-                    Hi, I'm <strong class="text-accent font-semibold">Ankit Kumar</strong>. I bridge the gap between complex engineering and immersive digital art.
+                    Hi, I'm <strong class="text-accent font-semibold">Ankit Kumar</strong>. I bridge the gap between
+                    complex engineering and immersive digital art.
                 </p>
 
                 <div class="flex items-center justify-center md:justify-start gap-4 w-full md:w-auto">
-                    <a href="#work" class="bg-accent text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors interactive">See my work</a>
-                    <a href="assets/images/Ankitresume.pdf" download class="glass-card px-8 py-4 rounded-full font-semibold text-accent hover:bg-white/10 transition-colors interactive">Download CV</a>
+                    <a href="#work"
+                        class="bg-accent text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors interactive">See
+                        my work</a>
+                    <a href="assets/images/Ankitresume.pdf" download
+                        class="glass-card px-8 py-4 rounded-full font-semibold text-accent hover:bg-white/10 transition-colors interactive">Download
+                        CV</a>
                 </div>
             </div>
         </section>
@@ -153,23 +189,34 @@
         <!-- Bento Box Section (About) -->
         <section id="about" class="py-20">
             <h2 class="text-3xl font-bold text-accent mb-10 tracking-tight reveal">Behind the code</h2>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="glass-card rounded-3xl p-8 md:col-span-3 bento-hover reveal flex flex-col justify-between">
                     <div>
-                        <svg class="w-8 h-8 text-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-8 h-8 text-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         <h3 class="text-2xl font-bold text-accent mb-4">My Story</h3>
                         <p class="text-muted leading-relaxed mb-4">
-                            I’m Ankit Kumar — a developer and visual creator who understands products from multiple dimensions.
+                            I’m Ankit Kumar — a developer and visual creator who understands products from multiple
+                            dimensions.
                         </p>
                         <p class="text-muted leading-relaxed mb-4">
-                            With experience in development, graphic design, 3D modeling, and animation, I approach every project with a complete perspective — from structure and performance to visuals and motion. This allows me to solve problems not just technically, but creatively and strategically.
+                            With experience in development, graphic design, 3D modeling, and animation, I approach every
+                            project with a complete perspective — from structure and performance to visuals and motion.
+                            This allows me to solve problems not just technically, but creatively and strategically.
                         </p>
                         <p class="text-muted leading-relaxed mb-4">
-                            I don't just build websites — I craft immersive digital experiences that look exceptional, perform seamlessly, and communicate clearly. My ability to combine technology with design thinking helps me create all-in-one solutions that feel polished, modern, and purpose-driven.
+                            I don't just build websites — I craft immersive digital experiences that look exceptional,
+                            perform seamlessly, and communicate clearly. My ability to combine technology with design
+                            thinking helps me create all-in-one solutions that feel polished, modern, and
+                            purpose-driven.
                         </p>
                         <p class="text-muted leading-relaxed">
-                            I enjoy working in fast-moving startup environments where ideas need both innovation and execution. For me, building is not just about making things work — it’s about making them remarkable.
+                            I enjoy working in fast-moving startup environments where ideas need both innovation and
+                            execution. For me, building is not just about making things work — it’s about making them
+                            remarkable.
                         </p>
                     </div>
                 </div>
@@ -179,24 +226,31 @@
         <!-- Educational Journey Section -->
         <section id="education" class="py-15 scroll-mt-20">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-accent text-center mb-2 tracking-tight reveal">Educational Journey</h2>
+                <h2 class="text-3xl font-bold text-accent text-center mb-2 tracking-tight reveal">Educational Journey
+                </h2>
                 <p class="text-muted text-center mb-12 max-w-2xl mx-auto reveal">
                     A timeline of growth, exploration, and continuous learning.
                 </p>
-                
+
                 <div class="timeline relative max-w-3xl mx-auto">
                     <!-- Vertical Timeline Line -->
-                    <div class="hidden md:block absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-white/40 via-white/10 to-transparent"></div>
+                    <div
+                        class="hidden md:block absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-white/40 via-white/10 to-transparent">
+                    </div>
 
                     <!-- Item 1 -->
                     <article class="timeline-item relative pl-10 md:pl-24 reveal">
-                        <div class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
+                        <div
+                            class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
                             <span class="h-3 w-3 rounded-full border border-accent bg-base"></span>
                         </div>
                         <div class="timeline-content">
-                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2022 – Present</span>
-                            <h3 class="text-2xl font-bold text-accent mt-2 tracking-tight">B.Tech in 3D Animation & Graphics · B.P. Mandal College of Engineering</h3>
-                            <p class="timeline-meta text-muted font-medium">Madhepura — Bihar Engineering University — CGPA 8.14</p>
+                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2022
+                                – Present</span>
+                            <h3 class="text-2xl font-bold text-accent mt-2 tracking-tight">B.Tech in 3D Animation &
+                                Graphics · B.P. Mandal College of Engineering</h3>
+                            <p class="timeline-meta text-muted font-medium">Madhepura — Bihar Engineering University —
+                                CGPA 8.42</p>
                             <p class="text-muted mt-3 leading-relaxed">
                                 Integrating immersive graphics, animation, and full-stack development.
                             </p>
@@ -205,12 +259,15 @@
 
                     <!-- Item 2 -->
                     <article class="timeline-item relative pl-10 md:pl-24 reveal">
-                        <div class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
+                        <div
+                            class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
                             <span class="h-3 w-3 rounded-full border border-accent bg-base"></span>
                         </div>
                         <div class="timeline-content">
-                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2020 – 2022</span>
-                            <h3 class="text-2xl font-bold text-accent mt-2">Intermediate (Science – PCM) · P.P.M Public School</h3>
+                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2020
+                                – 2022</span>
+                            <h3 class="text-2xl font-bold text-accent mt-2">Intermediate (Science – PCM) · P.P.M Public
+                                School</h3>
                             <p class="timeline-meta text-muted font-medium">Jehanabad — CBSE Board — 67%</p>
                             <p class="text-muted mt-3 leading-relaxed">
                                 Strengthened analytical thinking through physics and mathematics.
@@ -220,11 +277,13 @@
 
                     <!-- Item 3 -->
                     <article class="timeline-item relative pl-10 md:pl-24 pb-12 reveal">
-                        <div class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
+                        <div
+                            class="timeline-dot absolute left-0 md:left-3 top-1 flex h-6 w-6 items-center justify-center">
                             <span class="h-3 w-3 rounded-full border border-accent bg-base"></span>
                         </div>
                         <div class="timeline-content">
-                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2007 – 2020</span>
+                            <span class="timeline-date text-sm uppercase tracking-widest text-accent font-semibold">2007
+                                – 2020</span>
                             <h3 class="text-2xl font-bold text-accent mt-2">Matriculation · A.R.S Public School</h3>
                             <p class="timeline-meta text-muted font-medium">Bokaro — CBSE Board — 79%</p>
                             <p class="text-muted mt-3 leading-relaxed">
@@ -247,134 +306,345 @@
                 <!-- Tech Stack -->
                 <div class="glass-card rounded-3xl p-8 reveal bento-hover">
                     <div class="flex items-center gap-3 mb-6">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         <h3 class="text-xl font-bold text-accent">Tech Stack</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">HTML</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">CSS</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">JavaScript</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">React.js</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Next.js</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Tailwind CSS</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">shadcn/ui</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Three.js</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Node.js</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">HTML</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">CSS</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">JavaScript</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">React.js</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Next.js</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Tailwind
+                            CSS</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">shadcn/ui</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Three.js</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Node.js</span>
                     </div>
                 </div>
 
                 <!-- 3D & Motion Design -->
                 <div class="glass-card rounded-3xl p-8 reveal bento-hover">
                     <div class="flex items-center gap-3 mb-6">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                        </svg>
                         <h3 class="text-xl font-bold text-accent">3D & Motion</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Blender</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Autodesk Maya</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">3ds Max</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">ZBrush</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Blender</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Autodesk
+                            Maya</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">3ds
+                            Max</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">ZBrush</span>
                     </div>
                 </div>
 
                 <!-- Graphic & Visual Design -->
                 <div class="glass-card rounded-3xl p-8 reveal bento-hover">
                     <div class="flex items-center gap-3 mb-6">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
                         <h3 class="text-xl font-bold text-accent">Graphic Design</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Adobe Photoshop</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Adobe Illustrator</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">CorelDRAW</span>
-                        <span class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Canva</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Adobe
+                            Photoshop</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Adobe
+                            Illustrator</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">CorelDRAW</span>
+                        <span
+                            class="px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-white/5 text-accent hover:border-accent/30 transition-colors">Canva</span>
                     </div>
                 </div>
             </div>
         </section>
 
-      <!-- Selected Projects -->
+        <!-- Selected Projects -->
         <section id="work" class="py-20">
             <h2 class="text-3xl font-bold text-accent mb-10 tracking-tight reveal">Featured Work</h2>
-            
+
             <div class="space-y-12">
                 <!-- Project 1 -->
-                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                <div
+                    class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
                     <div class="p-10 flex flex-col justify-center">
-                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">01 / Logistics AI</span>
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">01 / Logistics
+                            AI</span>
                         <h3 class="text-3xl font-bold text-accent mb-4">Rakeopt</h3>
-                        <p class="text-muted mb-8 leading-relaxed">An AI-powered system designed for SAIL. It generates optimal railway rake plans, significantly cutting freight and demurrage costs by optimizing load clubbing, sequencing, and constraints at the Bokaro Steel Plant.</p>
+                        <p class="text-muted mb-8 leading-relaxed">An AI-powered system designed for SAIL. It generates
+                            optimal railway rake plans, significantly cutting freight and demurrage costs by optimizing
+                            load clubbing, sequencing, and constraints at the Bokaro Steel Plant.</p>
                         <div class="flex gap-3 mb-8 flex-wrap">
                             <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">React</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">AI Integration</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Optimization Algorithms</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">AI
+                                Integration</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Optimization
+                                Algorithms</span>
                         </div>
-                        <a href="https://rakeopt.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
-                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <a href="https://rakeopt.vercel.app/" target="_blank"
+                            class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
                         </a>
                     </div>
                     <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto">
-                        <img src="assets/images/Rakeopt.png" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop'" alt="Rakeopt" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        <img src="assets/images/Rakeopt.png"
+                            onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop'"
+                            alt="Rakeopt"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                <div
+                    class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
                     <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto order-2 md:order-1">
-                        <img src="assets/images/buspakdo.png" onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop'" alt="BusPakdo" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        <img src="assets/images/buspakdo.png"
+                            onerror="this.src='https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop'"
+                            alt="BusPakdo"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
                     </div>
                     <div class="p-10 flex flex-col justify-center order-1 md:order-2">
-                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">02 / Transit App</span>
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">02 / Transit
+                            App</span>
                         <h3 class="text-3xl font-bold text-accent mb-4">BusPakdo</h3>
-                        <p class="text-muted mb-8 leading-relaxed">A real-time bus tracking application for Punjab. Users can search by route or number, view live GPS locations, and receive accurate ETAs to dramatically simplify their daily commutes.</p>
+                        <p class="text-muted mb-8 leading-relaxed">A real-time bus tracking application for Punjab.
+                            Users can search by route or number, view live GPS locations, and receive accurate ETAs to
+                            dramatically simplify their daily commutes.</p>
                         <div class="flex gap-3 mb-8 flex-wrap">
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Next.js</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">GPS/Maps API</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Real-time DB</span>
+                            <span
+                                class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Next.js</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">GPS/Maps
+                                API</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Real-time
+                                DB</span>
                         </div>
-                        <a href="https://buspakdo.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
-                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <a href="https://buspakdo.vercel.app/" target="_blank"
+                            class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                <div
+                    class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
                     <div class="p-10 flex flex-col justify-center">
-                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">03 / Computer Vision</span>
-                        <h3 class="text-3xl font-bold text-accent mb-4">PedestrianDetect</h3>
-                        <p class="text-muted mb-8 leading-relaxed">A computer vision web application that detects pedestrians in video feeds utilizing HOG descriptors and OpenCV. Users can upload clips and receive instant visual detections mapped over the footage.</p>
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">03 / Restaurant
+                            Management</span>
+                        <h3 class="text-3xl font-bold text-accent mb-4">RestoTable</h3>
+                        <p class="text-muted mb-8 leading-relaxed">RestoTable is a modern, full-stack restaurant
+                            management platform designed to streamline restaurant operations through QR-based ordering,
+                            real-time kitchen management, digital billing, and powerful administrative tools.</p>
                         <div class="flex gap-3 mb-8 flex-wrap">
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Python</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">OpenCV</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Web API</span>
+                            <span
+                                class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Full-Stack</span>
+                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">QR
+                                Ordering</span>
+                            <span
+                                class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Real-time</span>
                         </div>
-                        <a href="https://pedestriandetect.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
-                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <a href="https://restotable.vercel.app/" target="_blank"
+                            class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
                         </a>
                     </div>
                     <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto">
-                        <img src="assets/images/pedestariandetect.png" onerror="this.src='https://images.unsplash.com/photo-1551488828-5e4536761005?q=80&w=800&auto=format&fit=crop'" alt="PedestrianDetect" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        <img src="assets/images/restotable.png"
+                            onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop'"
+                            alt="RestoTable"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
+                <div
+                    class="glass-card rounded-3xl overflow-hidden reveal group grid grid-cols-1 md:grid-cols-2 gap-0 border border-border interactive">
                     <div class="relative overflow-hidden bg-surface2 h-64 md:h-auto order-2 md:order-1">
-                        <img src="assets/images/tryvirtual.png" onerror="this.src='https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=800&auto=format&fit=crop'" alt="TryVirtual" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        <img src="assets/images/tryvirtual.png"
+                            onerror="this.src='https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=800&auto=format&fit=crop'"
+                            alt="TryVirtual"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
                     </div>
                     <div class="p-10 flex flex-col justify-center order-1 md:order-2">
-                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">04 / 3D Customization</span>
+                        <span class="text-xs font-mono text-muted uppercase tracking-widest mb-4">04 / 3D
+                            Customization</span>
                         <h3 class="text-3xl font-bold text-accent mb-4">TryVirtual</h3>
-                        <p class="text-muted mb-8 leading-relaxed">A web-based T-shirt customization platform that allows users to design their own T-shirts using an interactive 2D canvas editor and preview the final design on a realistic 3D model before adding.</p>
+                        <p class="text-muted mb-8 leading-relaxed">A web-based T-shirt customization platform that
+                            allows users to design their own T-shirts using an interactive 2D canvas editor and preview
+                            the final design on a realistic 3D model before adding.</p>
                         <div class="flex gap-3 mb-8 flex-wrap">
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Next.js</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Three.js</span>
-                            <span class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Shadcn/ui</span>
+                            <span
+                                class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Next.js</span>
+                            <span
+                                class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Three.js</span>
+                            <span
+                                class="px-3 py-1 text-xs rounded-full border border-white/20 text-accent">Shadcn/ui</span>
                         </div>
-                        <a href="https://imagexeditor.vercel.app/customize" target="_blank" class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
-                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <a href="https://imagexeditor.vercel.app/customize" target="_blank"
+                            class="inline-flex items-center gap-2 text-accent font-medium hover:opacity-70 transition-opacity">
+                            View Live Project <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-32 reveal">
+            <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <h2 class="text-5xl md:text-7xl font-black text-accent tracking-tighter interactive">Experience.
+                        </h2>
+                    </div>
+                    <p class="text-xl text-muted max-w-2xl">Professional experience that helped me transform creativity
+                        into real-world solutions.</p>
+                </div>
+            </div>
+
+            <div
+                class="glass-card rounded-3xl p-8 md:p-12 border border-border group hover:border-white/20 transition-all duration-500 interactive">
+                <div class="flex flex-col md:flex-row justify-between md:items-start gap-6 mb-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-accent mb-2">Graphics Design Intern</h3>
+                        <p class="text-xl font-medium text-green-400 mb-4">Ink.Company, Patna</p>
+                        <div class="flex flex-wrap gap-4 text-sm font-mono text-muted">
+                            <span class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                December 2025 – January 2026
+                            </span>
+                            <span
+                                class="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-full border border-white/10 text-accent">
+                                Offline Internship
+                            </span>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <div
+                            class="w-16 h-16 bg-surface2 rounded-full flex items-center justify-center border border-border group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-8 h-8 text-muted group-hover:text-accent transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-muted leading-relaxed text-lg mb-6">
+                        Worked as a Graphics Design Intern where I designed marketing creatives, branding assets, social
+                        media posts, custom T-shirt graphics, and print-ready artwork. Collaborated with the creative
+                        team to deliver visually appealing designs while maintaining brand consistency and meeting
+                        project deadlines.
+                    </p>
+                    <ul class="space-y-3 text-muted">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Designed branding and promotional materials.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Created custom T-shirt and merchandise designs.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Worked with typography, layouts, and color systems.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-400 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Prepared print-ready files for production.</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-mono text-accent uppercase tracking-widest mb-4">Tools Used</h4>
+                    <div class="flex gap-3 flex-wrap">
+                        <span
+                            class="px-4 py-2 text-sm rounded-full border border-white/20 text-accent bg-surface hover:bg-white/10 transition-colors">Adobe
+                            Illustrator</span>
+                        <span
+                            class="px-4 py-2 text-sm rounded-full border border-white/20 text-accent bg-surface hover:bg-white/10 transition-colors">Adobe
+                            Photoshop</span>
+                        <span
+                            class="px-4 py-2 text-sm rounded-full border border-white/20 text-accent bg-surface hover:bg-white/10 transition-colors">Canva</span>
+                        <span
+                            class="px-4 py-2 text-sm rounded-full border border-white/20 text-accent bg-surface hover:bg-white/10 transition-colors">Typography</span>
+                        <span
+                            class="px-4 py-2 text-sm rounded-full border border-white/20 text-accent bg-surface hover:bg-white/10 transition-colors">Branding</span>
+                        <span
+                            class="px-4 py-2 text-sm rounded-full border border-white/20 text-accent bg-surface hover:bg-white/10 transition-colors">Print
+                            Design</span>
                     </div>
                 </div>
             </div>
@@ -387,9 +657,16 @@
                 Currently looking for new opportunities.
             </p>
             <a href="mailto:ankitkumarboxer23@gmail.com" class="relative group inline-block interactive">
-                <div class="absolute -inset-1 bg-gradient-to-r from-white/20 to-white/0 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative px-10 py-5 bg-accent text-black text-xl font-bold rounded-full flex items-center gap-3 transition-transform group-hover:scale-105">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-white/20 to-white/0 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500">
+                </div>
+                <div
+                    class="relative px-10 py-5 bg-accent text-black text-xl font-bold rounded-full flex items-center gap-3 transition-transform group-hover:scale-105">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
                     Let's Talk
                 </div>
             </a>
@@ -400,9 +677,12 @@
         <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between">
             <p class="text-muted text-sm mb-4 md:mb-0">© 2024 Ankit Kumar. All rights reserved.</p>
             <div class="flex gap-6">
-                <a href="https://github.com/0ankitkumar0" class="text-muted hover:text-accent transition-colors interactive">GitHub</a>
-                <a href="https://www.linkedin.com/in/0ankitkumar0/" class="text-muted hover:text-accent transition-colors interactive">LinkedIn</a>
-                <a href="https://x.com/0ankit_singh0" class="text-muted hover:text-accent transition-colors interactive">X/Twitter</a>
+                <a href="https://github.com/0ankitkumar0"
+                    class="text-muted hover:text-accent transition-colors interactive">GitHub</a>
+                <a href="https://www.linkedin.com/in/0ankitkumar0/"
+                    class="text-muted hover:text-accent transition-colors interactive">LinkedIn</a>
+                <a href="https://x.com/0ankit_singh0"
+                    class="text-muted hover:text-accent transition-colors interactive">X/Twitter</a>
             </div>
         </div>
     </footer>
@@ -410,4 +690,5 @@
     <!-- External Interactive JS -->
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
